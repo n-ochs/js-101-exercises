@@ -21,4 +21,3 @@ function printSquare(size) {
     }
 }
 printSquare(5)
-
