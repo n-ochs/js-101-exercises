@@ -1,14 +1,12 @@
-// Write a function cipher which is given a string, an offset, and returns the Caesar cipher of the string.
+// Write a function decipher which is given a string, an offset, and returns the original message.
 
-//thoughts: make a for loop to find the index of each character in the string and then somehow replace it with another character
-
-function cipher(someString, offset) {
+function decipher(someString, offset) {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'
     let newString = ''
     for(i = 0; i < someString.length; i++) {
         const preLetter = someString.charAt(i);
         const indexLetter = alphabet.indexOf(preLetter);
-        let offsetIndex = indexLetter + offset;
+        let offsetIndex = indexLetter - offset;
         if(preLetter == " ") {
             newString += " ";
             continue;
@@ -17,8 +15,11 @@ function cipher(someString, offset) {
             newString += ".";
             continue;
         }
-        if(offsetIndex > alphabet.length) {
-            offsetIndex = offsetIndex%alphabet.length;
+        if(offsetIndex <= 0) {
+            offsetIndex = Math.abs(offsetIndex + alphabet.length); //somethings not right here.
+            if(offsetIndex > 26) {
+                offsetIndex = offsetIndex%alphabet.length
+            }
         }
         newString += alphabet.charAt(offsetIndex)
     }
@@ -26,4 +27,4 @@ function cipher(someString, offset) {
     
 }
 
-cipher('test this.', 5)
+decipher('yjxy ymnx.', 5)
