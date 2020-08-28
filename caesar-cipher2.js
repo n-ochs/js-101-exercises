@@ -16,7 +16,7 @@ function decipher(someString, offset) {
             continue;
         }
         if(offsetIndex <= 0) {
-            offsetIndex = Math.abs(offsetIndex + alphabet.length); //somethings not right here.
+            offsetIndex = Math.abs(offsetIndex + alphabet.length);
             if(offsetIndex > 26) {
                 offsetIndex = offsetIndex%alphabet.length
             }
